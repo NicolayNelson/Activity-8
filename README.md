@@ -1,1 +1,1 @@
-# Activity-8
+Made a page where you add a name and change font color and background color.

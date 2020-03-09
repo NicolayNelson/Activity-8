@@ -9,15 +9,32 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
-let greeting = document.getElementById("greeting");
-let preferences = document.getElementById("preferences-form");
-let backgroundColor = document.getElementById("foreground-color");
-let submit = document.getElementById("submit");
+let form = document.getElementById("preferences-form");
+let fgColor = document.getElementById("foreground-color");
+let body = document.querySelector("body");
+let bgColor= document.getElementById("background-color");
 
-function logIn(event) {
-    window.alert(element.getElementById("greeting"));
+function dataSync()
+{
+    localStorage.setItem("name", document.getElementById("name").value);
+    localStorage.setItem("fgColor", document.getElementById("foreground-color").value);
+    localStorage.setItem("bgColor", document.getElementById("background-color").value);
+    
+    let name = localStorage.getItem("name");
+    let fgColor = localStorage.getItem("fgColor");
+    let bgColor = localStorage.getItem("bgColor"); 
+    
+    if(fgColor != null)
+        document.body.style.color = fgColor;
+
+    if(bgColor != null)
+        document.body.style.backgroundColor = bgColor;
 }
-window.addEventListener('load', ("greeting") {
-    log.textContent(getElementById("greeting") = log.textContent (getElementById("greeting")) + 'load\n';
-});
 
+window.addEventListener('load', dataSync());
+document.getElementById("submit").addEventListener("click", function(event)
+{
+    dataSync();
+    window.alert("Preferences saved!");
+    event.preventDefault();
+});
